@@ -1,0 +1,21 @@
+impala-shell -q "Insert into table transactionlog_impala_test2
+select  
+tran_log_id as tranID,
+description as tranType,
+start_tran_date as startDate,
+start_tran_time as startTime,
+end_tran_date as endDate,
+end_tran_time as endTime,
+employee_id as employee,
+control_number as controlNum,
+line_number as lineNum,
+wh_id as whID,
+location_id as fromLoc,
+location_id_2 as toLoc,
+hu_id as palletID,
+regexp_extract(item_number,'(\\d+)',0) as itemNo,
+lot_number as lotNo,
+tran_qty as qty,
+cast(weight as float) as netWeight,
+NULL as grossWeight,
+strright(item_number,4) as customer from highjump_t_tran_log"
